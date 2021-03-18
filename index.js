@@ -15,6 +15,7 @@ const PORT = process.env.PORT || 3000
   }
   ));
   
+  // 400 error
   app.use((err, req, res, next) => {
       if (err instanceof SyntaxError && err.status === 400 && 'body' in err) {
           console.error(err);
@@ -22,48 +23,37 @@ const PORT = process.env.PORT || 3000
       }
       next();
   });
-  
+  //post
   app.post('/', function (request, res) {
-  
-      // console.log(req)
-          var payload = request.body.payload;
-          console.log(payload)
-          let filterData = payload.filter(item => {
+        var payload = request.body.payload;
+        var filterData = payload.filter(item => {
               return item.drm && item.episodeCount >0
               }) 
-          var newArray = [];
-          if (filterData && typeof filterData === 'object') {
+        var newArray = [];
+        if (filterData && typeof filterData === 'object') {
               
-              filterData.map((item, index) =>{
-                  
-                  var image = item.image
-                  console.log(image)
-                  newArray[index] = {
+            filterData.map((item, index) =>{
+                var image = item.image
+                newArray[index] = {
                       "image": item.image.showImage,
                       "slug": item.slug,
                       "title": item.title
-                  };
-              });
-              let newJason= JSON.stringify({response:newArray},null,"\t");
-              res.setHeader("Content-Type", "application/json");
-              res.send(newJason);
+                };
+            });
+            var newJason= JSON.stringify({response:newArray},null,"\t");
+            res.setHeader("Content-Type", "application/json");
+            res.send(newJason);
               // return newJason;
   
           } else {
-              var data = {
-                  message: 'Could not decode request: JSON parsing failed'
-              };
-              console.log(data)
               res.send("Could not decode request: JSON parsing failed").status(400);
-              // return data;
+              
           }
-      // res.send("Welcome!").status(200);
       
   });
   
   app.get('/',function(req,res){
-        res.setHeader("Content-Type", "application/json");
         res.send("Welcome!").status(200);
    });
   // app.listen(3000);
-  // module.exports = app
+  module.exports = app
