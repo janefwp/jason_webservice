@@ -45,6 +45,7 @@ const PORT = process.env.PORT || 3000
                   };
               });
               let newJason= JSON.stringify({response:newArray},null,"\t");
+              res.setHeader("Content-Type", "application/json");
               res.send(newJason);
               // return newJason;
   
