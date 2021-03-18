@@ -45,7 +45,7 @@ const PORT = process.env.PORT || 3000
                   };
               });
               let newJason= JSON.stringify({respones:newArray},null,"\t");
-              res.send(newJason);
+              res.send(express.json(newJason));
               // return newJason;
   
           } else {

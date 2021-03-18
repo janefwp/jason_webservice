@@ -20,7 +20,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/janefwp/jason_webservice.git"
+    "url": "https://git.heroku.com/jasonwebservice.git"
   },
   "keywords": [
     "node",
