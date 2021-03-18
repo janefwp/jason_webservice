@@ -1,3 +1,4 @@
-# node-js-getting-started
+# node-js webservice json data parse
 
-A barebones Node.js app using [Express 4](http://expressjs.com/).
+npm install
+npm start
