@@ -1,7 +1,7 @@
 const PORT = process.env.PORT || 3000
 
   var express = require('express');
-  var bodyParser = require('body-parser');
+//   var bodyParser = require('body-parser');
   var app = express();
   //create request body
   // app.use(bodyParser.urlencoded({extended: true}));
@@ -61,7 +61,8 @@ const PORT = process.env.PORT || 3000
   });
   
   app.get('/',function(req,res){
-      res.send("Welcome!").status(200);
+        res.setHeader("Content-Type", "application/json");
+        res.send("Welcome!").status(200);
    });
   // app.listen(3000);
   // module.exports = app
